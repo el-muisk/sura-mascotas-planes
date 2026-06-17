@@ -1,0 +1,590 @@
+/* ============================================================
+   PLANES MASCOTAS — SURA  |  Liferay Fragment CSS
+   Sistema de Diseño SURA 2024
+   Fuente: Nunito (sustituye Sura Sans — reemplazar si está disponible globalmente)
+   ============================================================ */
+
+/* ── Si el portal ya carga estas variables globalmente, eliminar este bloque ── */
+.sura-mascotas {
+  --azul-vivo:    #2D6DF6;
+  --azul-profundo:#0033A0;
+  --fondo-azul:   #DFEAFF;
+  --borde-azul:   #81B1FF;
+  --negro:        #0D0D0D;
+  --gris-500:     #3F3F41;
+  --gris:         #888B8D;
+  --gris-palido:  #B4B4B5;
+  --blanco:       #FFFFFF;
+  --texto-desc:   #606060;
+  --texto-sec:    #5A5A5A;
+  --divider:      #E8ECF2;
+  --sombra-card:  0 8px 25px 0 rgba(83,89,144,.07);
+  --sombra-ac:    0 2px 4px rgba(106,115,129,.12);
+  --f: 'Nunito', sans-serif;
+  --tr: .22s ease;
+}
+
+/* ── Reset scoped al componente ── */
+.sura-mascotas *,
+.sura-mascotas *::before,
+.sura-mascotas *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Sección raíz ─── */
+.planes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 40px 20px 56px;
+  max-width: 1140px;
+  margin: 0 auto;
+  font-family: var(--f);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════
+   TABS — mobile
+══════════════════ */
+.planes__tabs {
+  display: flex;
+  justify-content: flex-start;
+  gap: 8px;
+  width: 100%;
+}
+
+.tab-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  width: auto;
+  flex-shrink: 0;
+  border: 1px solid var(--gris);
+  border-radius: 16px;
+  background: var(--blanco);
+  cursor: pointer;
+  font-family: var(--f);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gris-500);
+  text-align: center;
+  transition: background var(--tr), border-color var(--tr), color var(--tr);
+}
+
+.tab-btn.active {
+  background: var(--fondo-azul);
+  border-color: var(--azul-vivo);
+  color: var(--azul-vivo);
+}
+
+/* Iconos DS SURA 2024 — contenedor + inset exacto del DS */
+.tab-icon-wrap {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.tab-icon-inner { position: absolute; }
+.tab-icon {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: grayscale(1) brightness(0.65);
+  transition: filter var(--tr);
+}
+.tab-btn.active .tab-icon { filter: none; }
+
+.tab-label--long  { display: none; }
+.tab-label--short { display: inline; white-space: nowrap; }
+
+/* ─── Content panels ─── */
+.planes__panel { display: none; width: 100%; }
+.planes__panel.active { display: block; }
+
+.ds-check img, .ds-dash img { display: block; }
+
+/* ─── Grid móvil ─── */
+.planes__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ═══════════════
+   PLAN CARD
+══════════════════ */
+.plan-card {
+  background: var(--blanco);
+  border: 1px solid var(--fondo-azul);
+  border-radius: 12px;
+  box-shadow: var(--sombra-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-card__head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 16px 0;
+}
+
+.card-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--azul-vivo);
+  line-height: 22px;
+}
+
+.card-price-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.price-desde, .price-periodo {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--negro);
+  line-height: normal;
+}
+
+.price-val {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--azul-vivo);
+  line-height: 26px;
+}
+
+.card-desc {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--texto-desc);
+  line-height: normal;
+}
+
+.card-cov-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0 0;
+  gap: 5px;
+}
+
+.card-cov-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 330px;
+  max-width: 100%;
+}
+
+.cov-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.cov-row__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 283px;
+  max-width: 100%;
+}
+
+.cov-row__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.cov-lbl { font-weight: 600; color: var(--azul-profundo); }
+.cov-val { font-weight: 400; color: var(--gris-500); }
+
+.cov-note {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--gris-palido);
+  line-height: normal;
+}
+
+.cov-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--divider);
+}
+
+.card-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-family: var(--f);
+}
+
+.card-toggle__label {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--azul-profundo);
+  line-height: 1;
+}
+
+.card-toggle__arrow { flex-shrink: 0; }
+.card-toggle.open .card-toggle__arrow .ds-chevron { transform: rotate(180deg); }
+
+.card-why {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height .35s ease;
+}
+.card-why.open { max-height: 800px; }
+
+.why-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 20px 12px;
+}
+
+.why-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--gris-500);
+  line-height: normal;
+}
+
+.why-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gris);
+  line-height: normal;
+}
+.why-desc strong { font-weight: 700; color: var(--azul-profundo); }
+
+.why-sec { display: flex; flex-direction: column; gap: 2px; }
+
+.why-sec__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--azul-profundo);
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.why-sec__copago {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--azul-profundo);
+  line-height: normal;
+}
+
+.why-sec__list {
+  list-style: disc;
+  padding-left: 21px;
+  line-height: 0;
+}
+
+.why-sec__list li {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gris-500);
+  line-height: normal;
+  margin-bottom: 0;
+}
+
+.card-cta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 16px;
+  margin-top: auto;
+}
+
+.btn-cotizar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 0;
+  max-width: 427px;
+  min-width: 150px;
+  height: 40px;
+  background: var(--azul-vivo);
+  color: var(--blanco);
+  border: none;
+  border-radius: 28px;
+  font-family: var(--f);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background .2s, transform .1s;
+}
+.btn-cotizar:hover  { background: #1558E0; }
+.btn-cotizar:active { transform: scale(.98); }
+
+/* ═══════════════
+   COMPARADOR
+══════════════════ */
+.compare {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.compare__title {
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--azul-vivo);
+  white-space: nowrap;
+  width: 100%;
+}
+
+.acordeon {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.ac-item {
+  background: var(--blanco);
+  border: 1px solid var(--borde-azul);
+  border-radius: 12px;
+  box-shadow: var(--sombra-ac);
+}
+.ac-item.open { box-shadow: none; }
+
+.ac-btn {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  font-family: var(--f);
+  text-align: left;
+}
+
+.ac-btn__txt { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+
+.ac-btn__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--azul-profundo);
+  line-height: normal;
+}
+
+.ac-btn__sub {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--texto-sec);
+  line-height: normal;
+}
+
+.ds-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  transition: transform var(--tr);
+}
+.ds-chevron svg { display: block; }
+.ac-btn__icon { flex-shrink: 0; }
+.ac-item.open .ac-btn__icon .ds-chevron { transform: rotate(180deg); }
+
+.ac-body {
+  display: none;
+  padding: 0 16px 24px;
+}
+.ac-item.open .ac-body { display: block; }
+
+/* ── Tabla comparador — grid compartido header + filas ── */
+.ac-tbl {
+  background: var(--blanco);
+  border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ac-tbl-row {
+  display: grid;
+  grid-template-columns: 1fr repeat(3, 56px);
+  gap: 4px;
+  align-items: center;
+  padding: 10px 8px;
+  border-radius: 10px;
+}
+.ac-tbl-row--header {
+  padding: 0 8px 12px;
+  align-items: stretch;
+  border-radius: 0;
+}
+.ac-tbl-row--stripe { background: #F9F9F9; }
+
+.ac-plan-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 6px 4px;
+  border: 1px solid var(--gris);
+  border-radius: 10px;
+  background: var(--blanco);
+  font-weight: 700;
+  color: var(--gris-500);
+  text-align: center;
+  line-height: 1.2;
+  min-height: 56px;
+}
+
+.paw-badge-img { display: none; flex-shrink: 0; }
+
+.badge-txt {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--gris-500);
+  text-align: center;
+  line-height: 1.2;
+}
+.badge-plan-lbl { display: block; }
+
+.ac-tbl-label {
+  font-size: 12px;
+  color: var(--gris-500);
+  line-height: 15px;
+  padding-right: 4px;
+  min-width: 0;
+}
+
+.ac-tbl-val {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  line-height: 13.75px;
+  color: var(--texto-sec);
+  text-align: center;
+}
+.ac-val-text { font-size: 11px; line-height: 13.75px; color: var(--texto-sec); }
+
+.ds-check, .ds-dash {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.ds-check img, .ds-dash img { width: 20px; height: 20px; }
+
+/* ════════════════
+   DESKTOP ≥ 1024px
+═════════════════ */
+@media (min-width: 1024px) {
+
+  .planes {
+    gap: 40px;
+    padding: 60px 40px 80px;
+  }
+
+  .planes__tabs {
+    width: 587px;
+    max-width: 100%;
+    height: 56px;
+    flex-shrink: 0;
+    align-self: flex-start;
+    gap: 4px;
+  }
+
+  .tab-btn {
+    flex: 1;
+    width: auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 4px;
+    height: 56px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .tab-label--long  { display: inline; }
+  .tab-label--short { display: none; }
+
+  .planes__grid {
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .plan-card { width: 336px; flex-shrink: 0; height: auto; }
+  .plan-card__head { padding-top: 24px; }
+  .card-toggle { display: none; }
+  .card-why { max-height: none !important; overflow: visible; }
+
+  .card-cta { justify-content: center; padding: 20px 16px 24px; }
+  .btn-cotizar { flex: none; width: 304px; }
+
+  .compare { gap: 16px; max-width: 914px; }
+  .compare__title { font-size: 36px; }
+  .acordeon { gap: 16px; }
+
+  .ac-tbl-row {
+    grid-template-columns: 1fr repeat(3, 152px);
+    gap: 8px;
+    padding: 12px 8px;
+    border-radius: 12px;
+  }
+  .ac-tbl-row--header { padding: 0 8px 16px; border-radius: 0; }
+  .ac-tbl-label { font-size: 14px; padding-right: 8px; }
+  .ac-tbl-val { font-size: 14px; }
+  .ac-val-text { font-size: 14px; }
+  .ds-check img, .ds-dash img { width: 24px; height: 24px; }
+
+  .ac-plan-badge {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 12px;
+    border: 1px solid #888B8D;
+    background: #FFF;
+    min-height: auto;
+    color: var(--gris-500);
+  }
+  .paw-badge-img { display: block; width: 24px; height: 24px; }
+  .badge-txt { font-size: 16px; font-weight: 700; white-space: nowrap; color: var(--gris-500); }
+  .badge-plan-lbl { display: inline; }
+}
